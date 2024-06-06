@@ -20,6 +20,13 @@
                 <form action="{{ url('products') }}" method="POST">
                     {{csrf_field()}}
                     <div class="form-group">
+                        <label for="images">Title</label>
+                        <input type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" id="images" multiple accept="jpeg,png,jpg,gif">
+                        @error('images')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" placeholder="Enter Product Title" value="{{ old('title') }}">
                         @error('title')
@@ -27,9 +34,48 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="price">Product Price</label>
+                        <input type="price" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Enter Product Price" value="{{ old('price') }}">
+                        @error('price')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="currency">Currency</label>
+                        <select class="form-control" id="currency" name="currency">
+                            <option value="USD" {{ old('currency') == 'USD' ? 'selected' : '' }}>USD</option>
+                            <option value="EUR" {{ old('currency') == 'EUR' ? 'selected' : '' }}>EUR</option>
+                            <option value="GBP" {{ old('currency') == 'GBP' ? 'selected' : '' }}>GBP</option>
+                        </select>
+                        @error('currency')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" id="stock" placeholder="Enter Product Stock" value="{{ old('stock') }}">
+                        @error('stock')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="content">Product Detail</label>
                         <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content" id="content" placeholder="Enter Product Detail">{{ old('content') }}</textarea>
                         @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="warranty">Warranty</label>
+                        <input type="number" class="form-control @error('warranty') is-invalid @enderror" name="warranty" id="warranty" placeholder="Enter Product Warranty" value="{{ old('warranty') }}">
+                        @error('warranty')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="promotion">Promotion</label>
+                        <input type="number" class="form-control @error('promotion') is-invalid @enderror" name="promotion" id="promotion" placeholder="Enter Product Promotion" value="{{ old('promotion') }}">
+                        @error('promotion')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

@@ -27,9 +27,48 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="price">Product Price</label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Enter Product Price" value="{{ $product -> price ?? old('price') }}">
+                        @error('price')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="currency">Currency</label>
+                        <select class="form-control" id="currency" name="currency">
+                            <option value="USD" {{ ($product && $product->currency == 'USD') || old('currency') == 'USD' ? 'selected' : '' }}>USD</option>
+                            <option value="EUR" {{ ($product && $product->currency == 'EUR') || old('currency') == 'EUR' ? 'selected' : '' }}>EUR</option>
+                            <option value="GBP" {{ ($product && $product->currency == 'GBP') || old('currency') == 'GBP' ? 'selected' : '' }}>GBP</option>
+                        </select>
+                        @error('currency')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Product Stock</label>
+                        <input type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" id="stock" placeholder="Enter Product Stock" value="{{ $product -> stock ?? old('stock') }}">
+                        @error('stock')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="content">Product Detail</label>
                         <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content" id="content" placeholder="Enter Product Detail">{{ $product -> content ?? old('content') }}</textarea>
                         @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="warranty">Warranty</label>
+                        <input type="text" class="form-control @error('warranty') is-invalid @enderror" name="warranty" id="warranty" placeholder="Enter Product Warranty" value="{{ $product -> warranty ?? old('warranty') }}">
+                        @error('warranty')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="promotion">Promotion</label>
+                        <input type="number" class="form-control @error('promotion') is-invalid @enderror" name="promotion" id="promotion" placeholder="Enter Product Promotion" value="{{ $product -> promotion ?? old('promotion') }}">
+                        @error('promotion')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
