@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('content');
+            $table->integer('price');
+            $table->varchar('img');
+            $table->varchar('currency');
             $table->integer('stock');
+            $table->varchar('warranty');
+            $table->integer('promotion');
             $table->timestamps();
         });
     }
